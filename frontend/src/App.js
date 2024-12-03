@@ -10,12 +10,19 @@ function App() {
   const handleFetchCandidates = async () => {
     setLoading(true);
     try {
+      // const endpoint =
+      //   selectedModel === "XGBoost"
+      //     ? "http://localhost:5000/api/predict-candidates/XGboost"
+      //     : selectedModel === "Spacy Similarity"
+      //     ? "http://localhost:5000/api/predict-candidates/spacy"
+      //     : "http://localhost:5000/api/predict-candidates";
+
       const endpoint =
         selectedModel === "XGBoost"
-          ? "http://localhost:5000/api/predict-candidates/XGboost"
+          ? "https://aiCandidateScreening.us-east-2.elasticbeanstalk.com/api/predict-candidates/XGboost"
           : selectedModel === "Spacy Similarity"
-          ? "http://localhost:5000/api/predict-candidates/spacy"
-          : "http://localhost:5000/api/predict-candidates";
+          ? "https://aiCandidateScreening.us-east-2.elasticbeanstalk.com/api/predict-candidates/spacy"
+          : "https://aiCandidateScreening.us-east-2.elasticbeanstalk.com/api/predict-candidates";
 
       const response = await fetch(endpoint, {
         method: "POST",
